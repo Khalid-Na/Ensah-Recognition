@@ -1,0 +1,686 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<project name="EnsahRecognition" default="do-deploy" basedir="."  xmlns:fx="javafx:com.sun.javafx.tools.ant">
+	<target name="init-fx-tasks">
+		<path id="fxant">
+			<filelist>
+				<file name="${java.home}\..\lib\ant-javafx.jar"/>
+				<file name="${java.home}\lib\jfxrt.jar"/>
+			</filelist>
+		</path>
+	
+		<taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+			uri="javafx:com.sun.javafx.tools.ant"
+			classpathref="fxant"/>
+	</target>
+	<target name="setup-staging-area">
+		<delete dir="externalLibs" />
+		<delete dir="project" />
+		<delete dir="projectRefs" />
+	
+		<mkdir dir="externalLibs" />
+	
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg-platform\3.2.1-1.3">
+				<filename name="ffmpeg-platform-3.2.1-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Program Files\Java\mysql-connector-java-8.0.22\mysql-connector-java-8.0.22">
+				<filename name="mysql-connector-java-8.0.22.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-android-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect-platform\0.5.3-1.3">
+				<filename name="libfreenect-platform-0.5.3-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-android-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.graphics.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\videoinput\0.200-1.3">
+				<filename name="videoinput-0.200-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\librealsense\1.9.6-1.3">
+				<filename name="librealsense-1.9.6-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-android-arm.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-android-arm.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv-platform\3.2.0-1.3">
+				<filename name="opencv-platform-3.2.0-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacv\1.3.2">
+				<filename name="javacv-1.3.2.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-android-arm.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark-platform\1.07-1.3">
+				<filename name="flandmark-platform-1.07-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\git\ExoVisix\bin">
+				<filename name="opencv-341.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-android-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.media.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-android-arm.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.swing.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\librealsense\1.9.6-1.3">
+				<filename name="librealsense-1.9.6-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture-platform\2.9.3.43-1.3">
+				<filename name="flycapture-platform-2.9.3.43-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacv-platform\1.3.2">
+				<filename name="javacv-platform-1.3.2.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx-swt.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\ffmpeg\3.2.1-1.3">
+				<filename name="ffmpeg-3.2.1-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-android-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\mysql\mysql-connector-java\5.1.14">
+				<filename name="mysql-connector-java-5.1.14.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-linux-armhf.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\librealsense\1.9.6-1.3">
+				<filename name="librealsense-1.9.6-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\librealsense-platform\1.9.6-1.3">
+				<filename name="librealsense-platform-1.9.6-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect\0.5.3-1.3">
+				<filename name="libfreenect-0.5.3-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect2-platform\0.2.0-1.3">
+				<filename name="libfreenect2-platform-0.2.0-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\videoinput-platform\0.200-1.3">
+				<filename name="videoinput-platform-0.200-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.web.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect2\0.2.0-1.3">
+				<filename name="libfreenect2-0.2.0-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus-platform\2.3.1-1.3">
+				<filename name="artoolkitplus-platform-2.3.1-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp\1.3.2">
+				<filename name="javacpp-1.3.2.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect2\0.2.0-1.3">
+				<filename name="libfreenect2-0.2.0-1.3-linux-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.base.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libfreenect2\0.2.0-1.3">
+				<filename name="libfreenect2-0.2.0-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\videoinput\0.200-1.3">
+				<filename name="videoinput-0.200-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.fxml.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394-platform\2.2.4-1.3">
+				<filename name="libdc1394-platform-2.2.4-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flandmark\1.07-1.3">
+				<filename name="flandmark-1.07-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\flycapture\2.9.3.43-1.3">
+				<filename name="flycapture-2.9.3.43-1.3.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\Desktop\openjfx-15.0.1_windows-x64_bin-sdk\javafx-sdk-15.0.1\lib">
+				<filename name="javafx.controls.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-windows-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\artoolkitplus\2.3.1-1.3">
+				<filename name="artoolkitplus-2.3.1-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-linux-ppc64le.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\libdc1394\2.2.4-1.3">
+				<filename name="libdc1394-2.2.4-1.3-linux-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\videoinput\0.200-1.3">
+				<filename name="videoinput-0.200-1.3-windows-x86.jar"/>
+			</fileset>
+		</copy>
+		<copy todir="externalLibs">
+			<fileset dir="C:\Users\HQ\.m2\repository\org\bytedeco\javacpp-presets\opencv\3.2.0-1.3">
+				<filename name="opencv-3.2.0-1.3-macosx-x86_64.jar"/>
+			</fileset>
+		</copy>
+	
+		<mkdir dir="project" />
+		<copy todir="project">
+			<fileset dir="C:\Users\HQ\git\ExoVisix">
+				<include name="src/**" />
+			</fileset>
+		</copy>
+	
+		<mkdir dir="projectRefs" />
+	</target>
+	<target name='do-compile'>
+		<delete dir="build" />
+		<mkdir dir="build/src" />
+		<mkdir dir="build/libs" />
+		<mkdir dir="build/classes" />
+	
+		<!-- Copy project-libs references -->
+		<copy todir="build/libs">
+			<fileset dir="externalLibs">
+				<include name="flandmark-1.07-1.3-windows-x86_64.jar"/>
+				<include name="opencv-3.2.0-1.3-android-x86.jar"/>
+				<include name="flandmark-1.07-1.3-linux-x86.jar"/>
+				<include name="flycapture-2.9.3.43-1.3-windows-x86_64.jar"/>
+				<include name="libfreenect2-platform-0.2.0-1.3.jar"/>
+				<include name="javafx-swt.jar"/>
+				<include name="libfreenect-0.5.3-1.3-windows-x86.jar"/>
+				<include name="opencv-3.2.0-1.3-linux-armhf.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-windows-x86_64.jar"/>
+				<include name="flycapture-platform-2.9.3.43-1.3.jar"/>
+				<include name="flandmark-platform-1.07-1.3.jar"/>
+				<include name="libdc1394-2.2.4-1.3.jar"/>
+				<include name="opencv-platform-3.2.0-1.3.jar"/>
+				<include name="libfreenect-0.5.3-1.3-macosx-x86_64.jar"/>
+				<include name="javafx.media.jar"/>
+				<include name="mysql-connector-java-5.1.14.jar"/>
+				<include name="javafx.controls.jar"/>
+				<include name="opencv-3.2.0-1.3-linux-x86.jar"/>
+				<include name="videoinput-0.200-1.3-windows-x86_64.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-windows-x86.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-linux-x86.jar"/>
+				<include name="librealsense-1.9.6-1.3-linux-x86_64.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-macosx-x86_64.jar"/>
+				<include name="videoinput-platform-0.200-1.3.jar"/>
+				<include name="libdc1394-2.2.4-1.3-linux-armhf.jar"/>
+				<include name="libfreenect-0.5.3-1.3-linux-armhf.jar"/>
+				<include name="ffmpeg-platform-3.2.1-1.3.jar"/>
+				<include name="opencv-3.2.0-1.3-windows-x86_64.jar"/>
+				<include name="videoinput-0.200-1.3-windows-x86.jar"/>
+				<include name="flycapture-2.9.3.43-1.3.jar"/>
+				<include name="opencv-3.2.0-1.3-android-arm.jar"/>
+				<include name="javafx.web.jar"/>
+				<include name="libfreenect-0.5.3-1.3.jar"/>
+				<include name="libdc1394-2.2.4-1.3-linux-ppc64le.jar"/>
+				<include name="opencv-3.2.0-1.3-linux-ppc64le.jar"/>
+				<include name="flandmark-1.07-1.3.jar"/>
+				<include name="opencv-3.2.0-1.3.jar"/>
+				<include name="flandmark-1.07-1.3-macosx-x86_64.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-macosx-x86_64.jar"/>
+				<include name="libdc1394-2.2.4-1.3-windows-x86_64.jar"/>
+				<include name="libfreenect-0.5.3-1.3-linux-x86.jar"/>
+				<include name="libfreenect2-0.2.0-1.3-linux-x86.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-linux-armhf.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-linux-x86_64.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-linux-x86_64.jar"/>
+				<include name="libfreenect-0.5.3-1.3-linux-ppc64le.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-linux-ppc64le.jar"/>
+				<include name="libdc1394-2.2.4-1.3-linux-x86.jar"/>
+				<include name="libfreenect-platform-0.5.3-1.3.jar"/>
+				<include name="flandmark-1.07-1.3-linux-armhf.jar"/>
+				<include name="flandmark-1.07-1.3-linux-ppc64le.jar"/>
+				<include name="libfreenect2-0.2.0-1.3.jar"/>
+				<include name="flandmark-1.07-1.3-android-x86.jar"/>
+				<include name="javafx.fxml.jar"/>
+				<include name="flycapture-2.9.3.43-1.3-linux-armhf.jar"/>
+				<include name="libdc1394-2.2.4-1.3-windows-x86.jar"/>
+				<include name="flycapture-2.9.3.43-1.3-linux-x86.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-windows-x86_64.jar"/>
+				<include name="opencv-341.jar"/>
+				<include name="artoolkitplus-platform-2.3.1-1.3.jar"/>
+				<include name="libfreenect2-0.2.0-1.3-linux-x86_64.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-android-x86.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-android-arm.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3.jar"/>
+				<include name="javacv-platform-1.3.2.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-android-x86.jar"/>
+				<include name="librealsense-1.9.6-1.3.jar"/>
+				<include name="javafx.swing.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-linux-armhf.jar"/>
+				<include name="librealsense-1.9.6-1.3-linux-x86.jar"/>
+				<include name="opencv-3.2.0-1.3-macosx-x86_64.jar"/>
+				<include name="javafx.graphics.jar"/>
+				<include name="libdc1394-2.2.4-1.3-macosx-x86_64.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-linux-x86.jar"/>
+				<include name="javacv-1.3.2.jar"/>
+				<include name="flandmark-1.07-1.3-android-arm.jar"/>
+				<include name="libdc1394-platform-2.2.4-1.3.jar"/>
+				<include name="opencv-3.2.0-1.3-linux-x86_64.jar"/>
+				<include name="opencv-3.2.0-1.3-windows-x86.jar"/>
+				<include name="flandmark-1.07-1.3-windows-x86.jar"/>
+				<include name="libdc1394-2.2.4-1.3-linux-x86_64.jar"/>
+				<include name="libfreenect-0.5.3-1.3-windows-x86_64.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-windows-x86.jar"/>
+				<include name="ffmpeg-3.2.1-1.3-android-arm.jar"/>
+				<include name="flycapture-2.9.3.43-1.3-windows-x86.jar"/>
+				<include name="ffmpeg-3.2.1-1.3.jar"/>
+				<include name="artoolkitplus-2.3.1-1.3-linux-ppc64le.jar"/>
+				<include name="flandmark-1.07-1.3-linux-x86_64.jar"/>
+				<include name="flycapture-2.9.3.43-1.3-linux-x86_64.jar"/>
+				<include name="libfreenect-0.5.3-1.3-linux-x86_64.jar"/>
+				<include name="librealsense-platform-1.9.6-1.3.jar"/>
+				<include name="javafx.base.jar"/>
+				<include name="javacpp-1.3.2.jar"/>
+				<include name="mysql-connector-java-8.0.22.jar"/>
+				<include name="videoinput-0.200-1.3.jar"/>
+			</fileset>
+		</copy>
+	
+		<!-- Copy project references -->
+	
+		<!-- Copy project sources itself -->
+		<copy todir="build/src">
+			<fileset dir="project/src">
+				<include name="**/*"/>
+			</fileset>
+		</copy>
+	
+		<javac includeantruntime="false" source="1.8" target="1.8" srcdir="build/src" destdir="build/classes" encoding="Cp1252">
+			<classpath>
+				<fileset dir="build/libs">
+					<include name="*"/>
+				</fileset>
+			</classpath>
+		</javac>
+	
+		<!-- Copy over none Java-Files -->
+		<copy todir="build/classes">
+		<fileset dir="project/src">
+			<exclude name="**/*.java"/>
+		</fileset>
+		</copy>
+	
+	
+	</target>
+	<target name="do-deploy" depends="setup-staging-area, do-compile, init-fx-tasks">
+		<delete file="dist"/>
+		<delete file="deploy" />
+	
+		<mkdir dir="dist" />
+		<mkdir dir="dist/libs" />
+	
+		<copy todir="dist/libs">
+			<fileset dir="externalLibs">
+				<include name="*" />
+			</fileset>
+		</copy>
+	
+	
+		<fx:resources id="appRes">
+			<fx:fileset dir="dist" includes="Recogntion.jar"/>
+			<fx:fileset dir="dist" includes="libs/*"/>
+		</fx:resources>
+	
+		<fx:application id="fxApplication"
+			name=""
+			mainClass="Main"
+		/>
+	
+		<mkdir dir="build/classes/META-INF" />
+	
+	
+	
+		<fx:jar destfile="dist/Recognition.jar">
+			<fx:application refid="fxApplication"/>
+			<fileset dir="build/classes">
+			</fileset>
+			<fx:resources refid="appRes"/>
+	
+			<manifest>
+				<attribute name="Implementation-Vendor" value=""/>
+				<attribute name="Implementation-Title" value=""/>
+				<attribute name="Implementation-Version" value=""/>
+				<attribute name="JavaFX-Feature-Proxy" value="None"/>
+			</manifest>
+		</fx:jar>
+	
+	
+	
+	
+	</target>
+</project>

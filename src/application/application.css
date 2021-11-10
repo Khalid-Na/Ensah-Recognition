@@ -1,0 +1,87 @@
+
+
+.aaa
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+    -fx-background-image: url("../start.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+#savef
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../face.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.recog
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../recognition.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+
+.stop2
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../stop.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
+.stop1
+{
+
+-fx-min-height: 60px;
+
+    -fx-min-width: 90px;
+
+	
+    -fx-background-image: url("../stop.png");
+
+    -fx-background-size: 50px 50px;
+
+    -fx-background-repeat: no-repeat;
+
+    -fx-background-position: center 7px;
+}
+
