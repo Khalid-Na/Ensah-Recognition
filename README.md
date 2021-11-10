@@ -21,8 +21,8 @@ A simple desktop application that detect and recognize faces
  ## User Interface
 
 <p align="center">
-<img  width="450"   alt="Face recognition interface" src="https://github.com/Khalid-Na/Ensah-Recognition/blob/1506182303076030cb0cab927129c9d48142440b/Results/Screenshot1.png">
-<img  width="450"  alt="Face recognition interface"  src="https://github.com/Khalid-Na/Ensah-Recognition/blob/1506182303076030cb0cab927129c9d48142440b/Results/Screenshot%202.png">
+<img  width="400"   alt="Face recognition interface" src="https://github.com/Khalid-Na/Ensah-Recognition/blob/1506182303076030cb0cab927129c9d48142440b/Results/Screenshot1.png">
+<img  width="400"  alt="Face recognition interface"  src="https://github.com/Khalid-Na/Ensah-Recognition/blob/1506182303076030cb0cab927129c9d48142440b/Results/Screenshot%202.png">
 </p>
 
 ## Requirements
